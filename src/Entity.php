@@ -2,11 +2,12 @@
 
 class Entity 
 {
-    protected $class = array();
-    protected $properties = array();
-    protected $entities = array();
-    protected $actions = array();
-    protected $links = array();
+    private $title;
+    private $class = array();
+    private $properties = array();
+    private $entities = array();
+    private $actions = array();
+    private $links = array();
 
     public function setClass(array $class)
     {
@@ -58,5 +59,40 @@ class Entity
     public function addLink(Link $link)
     {
         $this->links = $link;
+    }
+
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    public function getTitle()
+    {
+       return $this->title;
+    }
+
+    public function getClass()
+    {
+        return $this->class;
+    }
+
+    public function getProperties()
+    {
+        return $this->properties;
+    }
+
+    public function getEntities()
+    {
+        return $this->entities;
+    }
+
+    public function getActions()
+    {
+        return $this->actions;
+    }
+
+    public function getLinks()
+    {
+        return $this->links;
     }
 }
