@@ -8,6 +8,7 @@ class Entity
     private $entities = array();
     private $actions = array();
     private $links = array();
+    private $rel;
 
     public function setClass(array $class)
     {
@@ -48,6 +49,12 @@ class Entity
 
     public function addEntity(Entity $entity)
     {
+        $rel = $entity->getRel();
+
+        if (empty($rel)) {
+            throw new \InvalidArgumentException("Sub-entities must contain a rel");
+        }
+
         $this->entities[] = $entity;
     }
 
@@ -64,6 +71,18 @@ class Entity
     public function setTitle($title)
     {
         $this->title = $title;
+    }
+
+    public function setRel(array $relList)
+    {
+        foreach ($relList as $rel) {
+            $this->addRel($rel);
+        }
+    }
+
+    public function addRel($rel)
+    {
+        $this->rels[] = (string) $rel;
     }
 
     public function getTitle()
