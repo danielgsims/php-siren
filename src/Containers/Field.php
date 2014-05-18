@@ -1,4 +1,4 @@
-<?php
+<?php namespace Siren\Containers;
 
 class Field
 {

@@ -1,4 +1,4 @@
-<?php
+<?php namespace Siren\Containers;
 
 class Link
 {
@@ -15,8 +15,7 @@ class Link
 
     private function addRel(array $relList)
     {
-        foreach ($relList as $rel)
-        {
+        foreach ($relList as $rel) {
             $this->relList[] = (string) $rel;
         }
     }

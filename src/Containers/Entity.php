@@ -1,6 +1,6 @@
-<?php
+<?php namespace Siren\Containers;
 
-class Entity 
+class Entity
 {
     private $title;
     private $class = array();

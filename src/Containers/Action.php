@@ -1,4 +1,4 @@
-<?php
+<?php namespace Siren\Containers;
 
 class Action
 {
@@ -12,9 +12,9 @@ class Action
     public function __construct(
         $name,
         $href,
-        array $class = array(), 
+        array $class = array(),
         $method = "GET",
-        $type = "application/x-www-form-urlencoded",
+        $type,
         array $fields
     ) {
         $this->name = (string) $name;
