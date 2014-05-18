@@ -1,14 +1,12 @@
-PHP-Siren
-=========
-
 #Siren#
 
 "Siren is a hypermedia specification for representing entities. 
 As HTML is used for visually representing documents on a Web site,
-Siren is a specification for presenting entities via a Web API." You can
-read more about Siren and see examples at the [official github repo](https://github.com/kevinswiber/siren)
+Siren is a specification for presenting entities via a Web API." 
 
-#The library#
+You can read more about Siren and see examples at the [official github repo](https://github.com/kevinswiber/siren)
+
+#PHP-Siren#
 
 This library is designed to help create valid Siren responses with an object
 oriented approach. The PHP Siren library consists of components which represent
