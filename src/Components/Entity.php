@@ -9,6 +9,7 @@ class Entity
     private $actions = array();
     private $links = array();
     private $rel;
+    private $href;
 
     public function setClass(array $class)
     {
@@ -65,7 +66,7 @@ class Entity
 
     public function addLink(Link $link)
     {
-        $this->links = $link;
+        $this->links[] = $link;
     }
 
     public function setTitle($title)
@@ -82,7 +83,12 @@ class Entity
 
     public function addRel($rel)
     {
-        $this->rels[] = (string) $rel;
+        $this->rel[] = (string) $rel;
+    }
+
+    public function setHref($href)
+    {
+        $this->href = (string) $href;
     }
 
     public function getTitle()
@@ -113,5 +119,15 @@ class Entity
     public function getLinks()
     {
         return $this->links;
+    }
+
+    public function getHref()
+    {
+        return $this->href;
+    }
+
+    public function getRel()
+    {
+        return $this->rel;
     }
 }

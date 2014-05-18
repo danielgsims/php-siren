@@ -22,7 +22,7 @@ class Link
 
     public function getRel()
     {
-        return $this->rel;
+        return $this->relList;
     }
 
     public function getHref()
