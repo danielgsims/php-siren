@@ -11,41 +11,18 @@ class Entity
     private $rel;
     private $href;
 
-    public function setClass(array $class)
+    public function addClass($class)
     {
-        $this->class = $class;
+        $this->class = (string) $class;
+
+        return $this;
     }
 
     public function setProperties(array $properties)
     {
         $this->properties = $properties;
-    }
 
-    public function setEntities(array $entities)
-    {
-        $this->entities = array();
-
-        foreach ($entities as $entity) {
-            $this->addEntity($entity);
-        }
-    }
-
-    public function setActions(array $actions)
-    {
-        $this->actions = array();
-
-        foreach ($actions as $action) {
-            $this->addAction($action);
-        }
-    }
-
-    public function setLinks(array $links)
-    {
-        $this->links = array();
-
-        foreach ($links as $link) {
-            $this->addLink($link);
-        }
+        return $this;
     }
 
     public function addEntity(Entity $entity)
@@ -57,38 +34,43 @@ class Entity
         }
 
         $this->entities[] = $entity;
+
+        return $this;
     }
 
     public function addAction(Action $action)
     {
         $this->actions[] = $action;
+
+        return $this;
     }
 
     public function addLink(Link $link)
     {
         $this->links[] = $link;
+
+        return $this;
     }
 
     public function setTitle($title)
     {
         $this->title = $title;
-    }
 
-    public function setRel(array $relList)
-    {
-        foreach ($relList as $rel) {
-            $this->addRel($rel);
-        }
+        return $this;
     }
 
     public function addRel($rel)
     {
         $this->rel[] = (string) $rel;
+
+        return $this;
     }
 
     public function setHref($href)
     {
         $this->href = (string) $href;
+
+        return $this;
     }
 
     public function getTitle()

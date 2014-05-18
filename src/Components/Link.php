@@ -6,18 +6,26 @@ class Link
     private $href;
     private $title;
 
-    public function __construct(array $relList, $href, $title = null)
+    public function setHref($href)
     {
-        $this->addRel($relList);
-        $this->href = $href;
-        $this->title = $title;
+        $this->href = (string) $href;
+
+        return $this;
     }
 
-    private function addRel(array $relList)
+    public function addRel($rel)
     {
-        foreach ($relList as $rel) {
-            $this->relList[] = (string) $rel;
-        }
+        $this->relList[] = (string) $rel;
+
+        return $this;
+    }
+
+
+    public function setTitle($title)
+    {
+        $this->title = (string) $title;
+
+        return $this;
     }
 
     public function getRel()

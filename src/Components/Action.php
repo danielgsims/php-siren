@@ -10,45 +10,53 @@ class Action
     private $fields = array();
     private $title;
 
-    public function __construct(
-        $name,
-        $href,
-        $method = "GET",
-        $title = null,
-        array $class = null,
-        $type = null,
-        array $fields = null
-    ) {
+    public function setName($name)
+    {
         $this->name = (string) $name;
+
+        return $this;
+    }
+
+    public function setHref($href)
+    {
         $this->href = (string) $href;
-        $this->class = $class;
+
+        return $this;
+    }
+
+    public function setMethod($method)
+    {
         $this->method = (string) $method;
-        $this->handleFields($fields);
-        $this->handleType($type);
-        $this->title = (string) $title;
+
+        return $this;
     }
 
-    private function handleFields($fields)
+    public function setType($type)
     {
-        if (!empty($fields)) {
-            foreach ($fields as $field) {
-                $this->addField($field);
-            }
-        }
-    }
-
-    private function handleType($type)
-    {
-        if (empty($type) && !empty($this->fields)) {
-            $type = "application/x-www-form-urlencoded";
-        }
-
         $this->type = (string) $type;
+
+        return $this;
+    }
+
+    public function setTitle($title)
+    {
+        $this->title = (string) $title;
+
+        return $this;
+    }
+
+    public function addClass($class)
+    {
+        $this->class[] = (string) $class;
+
+        return $this;
     }
 
     public function addField(Field $field)
     {
         $this->fields[] = $field;
+
+        return $this;
     }
 
     public function getName()

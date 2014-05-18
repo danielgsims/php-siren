@@ -7,15 +7,34 @@ class Field
     private $value;
     private $title;
 
-    public function __construct($name, $type = "text", $title = null, $value = null)
+    public function setName($name)
     {
-        $this->name = (string) $name;
-        $this->type = (string) $type;
-        $this->value = (string) $value;
-        $this->title = (string) $title;
+       $this->name = (string) $name;
 
+       return $this;
     }
 
+    public function setType($type)
+    {
+        $this->type = (string) $type;
+
+        return $this;
+    }
+
+    public function setValue($value)
+    {
+        $this->value = (string) $value;
+
+        return $this;
+    }
+
+    public function setTitle()
+    {
+        $this->title = (string) $title;
+        
+        return $this;
+    }
+    
     public function getName()
     {
         return $this->name;
