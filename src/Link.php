@@ -2,15 +2,23 @@
 
 class Link
 {
-    private $rel;
+    private $relList = array();
     private $href;
     private $title;
 
-    public function __construct($rel, $href, $title = null)
+    public function __construct(array $relList, $href, $title = null)
     {
-        $this->rel = $rel;
+        $this->addRel($relList);
         $this->href = $href;
         $this->title = $title;
+    }
+
+    private function addRel(array $relList)
+    {
+        foreach ($relList as $rel)
+        {
+            $this->relList[] = (string) $rel;
+        }
     }
 
     public function getRel()
