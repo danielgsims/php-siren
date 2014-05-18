@@ -1,4 +1,4 @@
-<?php namespace Siren\Containers;
+<?php namespace Siren\Components;
 
 class Action
 {
@@ -8,14 +8,16 @@ class Action
     private $method;
     private $type;
     private $fields = array();
+    private $title;
 
     public function __construct(
         $name,
         $href,
-        array $class = array(),
         $method = "GET",
-        $type,
-        array $fields
+        $title = null,
+        array $class = null,
+        $type = null,
+        array $fields = null
     ) {
         $this->name = (string) $name;
         $this->href = (string) $href;
@@ -23,13 +25,13 @@ class Action
         $this->method = (string) $method;
         $this->handleFields($fields);
         $this->handleType($type);
-
+        $this->title = (string) $title;
     }
 
     private function handleFields($fields)
     {
         if (!empty($fields)) {
-            foreach ($this->fields as $field) {
+            foreach ($fields as $field) {
                 $this->addField($field);
             }
         }
@@ -44,8 +46,43 @@ class Action
         $this->type = (string) $type;
     }
 
-    private function addField(Field $field)
+    public function addField(Field $field)
     {
         $this->fields[] = $field;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getHref()
+    {
+        return $this->href;
+    }
+
+    public function getMethod()
+    {
+        return $this->method;
+    }
+
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    public function getFields()
+    {
+        return $this->fields;
+    }
+
+    public function getClass()
+    {
+        return $this->class;
     }
 }
