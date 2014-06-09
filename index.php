@@ -27,6 +27,7 @@
     $customerInfo->addClass("info")
                  ->addClass("customer")
                  ->addRel("http://x.io/rels/customer")
+                 ->setHref("http://api.x.io/customer")
                  ->setProperties(array(
                     "customerId" => "pj123",
                     "name" => "Peter Joseph"

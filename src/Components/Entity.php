@@ -13,7 +13,7 @@ class Entity
 
     public function addClass($class)
     {
-        $this->class = (string) $class;
+        $this->class[] = (string) $class;
 
         return $this;
     }

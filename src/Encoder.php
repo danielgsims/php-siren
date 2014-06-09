@@ -16,44 +16,56 @@ class Encoder
 
     private function encodeEntity(Entity $entity, $isSubEntity = false)
     {
-        $r = array();
+        if ($isSubEntity) {
+            $this->validateSubEntity($entity);
+        }
+
+        $response = array();
 
         if ($class = $entity->getClass()) {
-            $r['class'] = $class;
+            $response['class'] = $class;
         }
 
         if ($properties = $entity->getProperties()) {
-            $r['properties'] = $properties;
+            $response['properties'] = $properties;
         }
 
         if (!$isSubEntity && $entities = $entity->getEntities()) {
-            $r['entities'] = array();
+            $response['entities'] = array();
 
             foreach ($entities as $subEntity) {
-                $r['entities'][] = $this->encodeEntity($subEntity, true);
+                $response['entities'][] = $this->encodeEntity($subEntity, true);
             }
         }
 
         if (!$isSubEntity && $actions = $entity->getActions()) {
-            $r['actions'] = array();
+            $response['actions'] = array();
             foreach ($actions as $action) {
-                $r['actions'][] = $this->encodeAction($action);
+                $response['actions'][] = $this->encodeAction($action);
             }
+        }
+
+        if ($isSubEntity) {
+            $response['href'] = $entity->getHref();
+            $response['rel'] = $entity->getRel();
         }
 
         if($links = $entity->getLinks()) {
-            $r['links'] = array();
+            $response['links'] = array();
             foreach ($links as $link) {
-                $r['links'][] = $this->encodeLink($link);
+                $response['links'][] = $this->encodeLink($link);
             }
         }
 
-        return $r;
+        return $response;
     }
 
     private function encodeAction(Action $action)
     {
+        $this->validateAction($action);
+
         $a = array();
+
         $a['name'] = $action->getName();
 
         if ($class = $action->getClass()) {
@@ -108,5 +120,53 @@ class Encoder
         }
 
         return $l;
+    }
+
+    private function validateSubEntity(Entity $entity)
+    {
+        $rel = $entity->getRel();
+        if (empty($rel)) {
+            throw new \Exception("Sub-entities must contain a rel");
+        }
+
+        $href = $entity->getHref();
+
+        if (empty($href)) {
+            throw new \Exception("Sub-entities must contain an href");
+        }
+    }
+
+    private function validateField(Field $field)
+    {
+        $name = $field->getName();
+        if (empty($name)) {
+            throw new \Exception("Field name is required");
+        }
+    }
+
+    private function validateLink(Link $link)
+    {
+        $name = $link->getRel();
+        if (empty($name)) {
+            throw new \Exception("Link rel is required");
+        }
+
+        $href = $link->getHref();
+        if ( empty($href) ) {
+            throw new \Exception("Link href is required");
+        }
+    }
+
+    private function validateAction(Action $action)
+    {
+        $name = $action->getName();
+        if (empty($name)) {
+            throw new \Exception("Action name is required");
+        }
+
+        $href = $action->getHref();
+        if ( empty($href) ) {
+            throw new \Exception("Action href is required");
+        }
     }
 }
