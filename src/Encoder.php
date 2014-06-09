@@ -79,9 +79,7 @@ class Encoder
             $a['title'] = $title;
         }
 
-        if ($type = $action->getType()) {
-            $a['type'] = $type;
-        }
+        $a['type'] = $action->getType() ?: 'text'; 
 
         if ($fields = $action->getFields()) {
             $a['fields'] = array();
