@@ -5,7 +5,7 @@
     use Siren\Components\Link;
     use Siren\Components\Action;
     use Siren\Components\Field;
-    use Siren\Encoder;
+    use Siren\Encoders\EncoderFactory;
 
     $order = new Entity();
     $order->addClass("order")
@@ -80,7 +80,9 @@
     $order->addLink($prev);
     $order->addLink($next);
 
-    $encoder = new Encoder;
+    $factory = new EncoderFactory;
+    $encoder = $factory->entity();
+
     $response = $encoder->encode($order);
 
-    print_r($response);
+    print_r(json_encode($response));
