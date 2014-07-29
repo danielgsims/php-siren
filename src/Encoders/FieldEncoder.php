@@ -7,9 +7,12 @@ class FieldEncoder extends BaseEncoder
 
     public function encode(Field $field)
     {
-        $response = array();
-        $response['name'] = $field->getName();
-        $response['type'] = $field->getType();
+        $this->validateField($field);
+
+        $response = [
+            'name' => $field->getName(),
+            'type' => $field->getType() ?: "text"
+        ];
 
         if ($value = $field->getValue()) {
             $response['value'] = $value;
@@ -26,7 +29,7 @@ class FieldEncoder extends BaseEncoder
     {
         $name = $field->getName();
         if (empty($name)) {
-            throw new \Exception("Field name is required");
+            throw new \InvalidArgumentException("Field name is required");
         }
     }
 

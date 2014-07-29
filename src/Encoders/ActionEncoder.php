@@ -38,7 +38,7 @@ class ActionEncoder extends BaseEncoder
             $response['title'] = $title;
         }
 
-        $response['type'] = $action->getType() ?: 'text'; 
+        $response['type'] = $action->getType() ?: 'application/x-www-form-urlencoded'; 
 
         if ($fields = $action->getFields()) {
             $response['fields'] = array();

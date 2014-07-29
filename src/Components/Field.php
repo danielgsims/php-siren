@@ -28,7 +28,7 @@ class Field
         return $this;
     }
 
-    public function setTitle()
+    public function setTitle($title)
     {
         $this->title = (string) $title;
         
