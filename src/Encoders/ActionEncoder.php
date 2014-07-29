@@ -9,13 +9,13 @@ class ActionEncoder extends BaseEncoder
         $name = $action->getName();
 
         if (empty($name)) {
-            throw new \Exception("Action name is required");
+            throw new \InvalidArgumentException("Action name is required");
         }
 
         $href = $action->getHref();
 
         if ( empty($href) ) {
-            throw new \Exception("Action href is required");
+            throw new \InvalidArgumentException("Action href is required");
         }
     }
 
