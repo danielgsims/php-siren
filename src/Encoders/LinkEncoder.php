@@ -6,15 +6,15 @@ class LinkEncoder extends BaseEncoder
 {
     public function encode(Link $link)
     {
-        $l = array();
-        $l['rel'] = $link->getRel();
-        $l['href'] = $link->getHref();
+        $response = array();
+        $response['rel'] = $link->getRel();
+        $response['href'] = $link->getHref();
 
         if ($title = $link->getTitle()) {
-            $l['title'] = $title;
+            $response['title'] = $title;
         }
 
-        return $l;
+        return $response;
     }
 
     private function validateLink(Link $link)

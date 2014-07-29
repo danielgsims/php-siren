@@ -7,19 +7,19 @@ class FieldEncoder extends BaseEncoder
 
     public function encode(Field $field)
     {
-        $f = array();
-        $f['name'] = $field->getName();
-        $f['type'] = $field->getType();
+        $response = array();
+        $response['name'] = $field->getName();
+        $response['type'] = $field->getType();
 
         if ($value = $field->getValue()) {
-            $f['value'] = $value;
+            $response['value'] = $value;
         }
 
         if ($title = $field->getTitle()) {
-            $f['title'] = $title;
+            $response['title'] = $title;
         }
 
-        return $f;
+        return $response;
     }
 
     private function validateField(Field $field)

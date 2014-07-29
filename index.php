@@ -85,4 +85,4 @@
 
     $response = $encoder->encode($order);
 
-    print_r(json_encode($response));
+    print_r(json_encode($response, JSON_UNESCAPED_SLASHES));

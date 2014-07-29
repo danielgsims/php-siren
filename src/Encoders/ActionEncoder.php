@@ -7,11 +7,13 @@ class ActionEncoder extends BaseEncoder
     private function validateAction(Action $action)
     {
         $name = $action->getName();
+
         if (empty($name)) {
             throw new \Exception("Action name is required");
         }
 
         $href = $action->getHref();
+
         if ( empty($href) ) {
             throw new \Exception("Action href is required");
         }
@@ -21,34 +23,34 @@ class ActionEncoder extends BaseEncoder
     {
         $this->validateAction($action);
 
-        $a = array();
+        $response = array();
 
-        $a['name'] = $action->getName();
+        $response['name'] = $action->getName();
 
         if ($class = $action->getClass()) {
-            $a['class'] = $class;
+            $response['class'] = $class;
         }
 
-        $a['href'] = $action->getHref();
-        $a['method'] = $action->getMethod();
+        $response['href'] = $action->getHref();
+        $response['method'] = $action->getMethod();
 
         if ($title = $action->getTitle()) {
-            $a['title'] = $title;
+            $response['title'] = $title;
         }
 
-        $a['type'] = $action->getType() ?: 'text'; 
+        $response['type'] = $action->getType() ?: 'text'; 
 
         if ($fields = $action->getFields()) {
-            $a['fields'] = array();
+            $response['fields'] = array();
 
             $fieldEncoder = $this->factory->field();
 
             foreach ($fields as $field) {
-                $a['fields'][] = $fieldEncoder->encode($field);
+                $response['fields'][] = $fieldEncoder->encode($field);
             }
 
         }
 
-        return $a;
+        return $response;
     }
 }
