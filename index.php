@@ -5,7 +5,7 @@
     use Siren\Components\Link;
     use Siren\Components\Action;
     use Siren\Components\Field;
-    use Siren\Encoders\EncoderFactory;
+    use Siren\Encoders\Encoder;
 
     $order = new Entity();
     $order->addClass("order")
@@ -80,9 +80,6 @@
     $order->addLink($prev);
     $order->addLink($next);
 
-    $factory = new EncoderFactory;
-    $encoder = $factory->entity();
-
-    $response = $encoder->encode($order);
+    $response = (new Encoder)->encode($order);
 
     print_r(json_encode($response, JSON_UNESCAPED_SLASHES));
