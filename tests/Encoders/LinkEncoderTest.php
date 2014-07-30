@@ -1,6 +1,6 @@
 <?php
 use Siren\Components\Link as L;
-use Siren\Encoders\EncoderFactory as E;
+use Siren\Encoders\Encoder as E;
 
 class LinkEncoderTest extends PHPUnit_Framework_TestCase
 {

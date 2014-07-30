@@ -4,7 +4,7 @@ abstract class BaseEncoder
 {
     protected $factory;
 
-    public function __construct(EncoderFactory $factory)
+    public function __construct(Encoder $factory)
     {
         $this->factory = $factory;
     }

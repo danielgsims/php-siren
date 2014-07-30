@@ -1,6 +1,8 @@
 <?php namespace Siren\Encoders;
 
-class EncoderFactory
+use Siren\Components\Entity;
+
+class Encoder
 {
     public function entity()
     {
@@ -25,5 +27,10 @@ class EncoderFactory
     public function link()
     {
         return new LinkEncoder($this);
+    }
+
+    public function encode(Entity $entity)
+    {
+        return $this->entity()->encode($entity);
     }
 }

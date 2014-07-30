@@ -1,7 +1,7 @@
 <?php
 
 use Siren\Components\Field as F;
-use Siren\Encoders\EncoderFactory as E;
+use Siren\Encoders\Encoder as E;
 
 class FieldEncoderTest extends PHPUnit_Framework_TestCase
 {
