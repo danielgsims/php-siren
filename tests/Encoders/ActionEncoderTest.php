@@ -20,5 +20,3 @@ class ActionEncoderTest extends PHPUnit_Framework_TestCase
         $e->encode((new A)->setName("test-action"));
     }
 }
-
-
