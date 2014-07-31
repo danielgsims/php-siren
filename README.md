@@ -191,3 +191,5 @@ Example output
     ]
 }
 ```
+
+![Devtroit](http://devtroit.com/img/badges/badge-medium.png)
