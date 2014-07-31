@@ -1,5 +1,14 @@
 {
-    "require": {
+    "name": "danielgsims/php-siren",
+    "description": "Helper to write Siren hypermedia responses",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel G Sims",
+            "email": "danielgarthsims@gmail.com"
+        }
+    ],
+    "require-dev": {
         "phploc/phploc": "2.1.*@dev"
     },
     "autoload": {
