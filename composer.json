@@ -2,6 +2,7 @@
     "name": "danielgsims/php-siren",
     "description": "Helper to write Siren hypermedia responses",
     "license": "MIT",
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Daniel G Sims",
