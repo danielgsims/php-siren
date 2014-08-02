@@ -8,9 +8,6 @@
             "email": "danielgarthsims@gmail.com"
         }
     ],
-    "require-dev": {
-        "phploc/phploc": "2.1.*@dev"
-    },
     "autoload": {
         "psr-4": {
             "Siren\\": "src/"
